@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Portal - GBPS Sultan Matt Uchari</title>
+    <style>
+        :root { --primary: #1a5f7a; --secondary: #00af91; }
+        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        h1 { color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; }
+        h2 { color: #666; font-size: 0.9rem; margin-bottom: 25px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        button { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        #resultDisplay { display: none; margin-top: 25px; text-align: left; border-top: 2px solid #eee; padding-top: 20px; }
+        .data-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f9f9f9; }
+        .label { font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>GOVT BOYS PRIMARY SCHOOL</h1>
+    <h2>Sultan Matt Uchari - Result 2025</h2>
+    <input type="number" id="rollInput" placeholder="Enter Roll No (e.g. 1, 2)">
+    <button onclick="checkResult()">Check Result</button>
+    <div id="resultDisplay">
+        <h3 id="stdName" style="text-align: center; color: var(--primary);"></h3>
+        <div class="data-row"><span class="label">Father:</span> <span id="stdFather"></span></div>
+        <div class="data-row"><span class="label">Obtained:</span> <span id="stdMarks"></span></div>
+        <div class="data-row"><span class="label">Percentage:</span> <span id="stdPer"></span></div>
+        <div class="data-row"><span class="label">Position:</span> <span id="stdRank"></span></div>
+    </div>
+</div>
+<script>
+    const resultData = {
+        "1": { name: "Shair Jan", father: "Shair Khan", marks: 198, per: "84%", rank: "1st" },
+        "2": { name: "Rehana Bibi", father: "Kouda Khan", marks: 192, per: "81%", rank: "2nd" },
+        "3": { name: "Bibi Hajra", father: "Ismail", marks: 183, per: "77%", rank: "3rd" },
+        "4": { name: "Rashid", father: "Lal Muhammad", marks: 176, per: "74%", rank: "-" },
+        "5": { name: "Mir Khan", father: "Bar Khan", marks: 172, per: "73%", rank: "-" }
+        // Mazeed data aap pencil icon se baad mein bhi add kar sakte hain
+    };
+    function checkResult() {
+        let roll = document.getElementById('rollInput').value;
+        const data = resultData[roll];
+        if (data) {
+            document.getElementById('stdName').innerText = data.name;
+            document.getElementById('stdFather').innerText = data.father;
+            document.getElementById('stdMarks').innerText = data.marks;
+            document.getElementById('stdPer').innerText = data.per;
+            document.getElementById('stdRank').innerText = data.rank;
+            document.getElementById('resultDisplay').style.display = 'block';
+        } else { alert("Roll Number not found!"); }
+    }
+</script>
+</body>
+</html>
